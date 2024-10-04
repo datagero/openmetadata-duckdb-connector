@@ -11,7 +11,7 @@
 
 from setuptools import setup, find_packages
 
-base_requirements = {"openmetadata-ingestion~=1.1.2"}
+base_requirements = {"openmetadata-ingestion~=1.5.0"}
 
 setup(
     name="duckdb-connector",

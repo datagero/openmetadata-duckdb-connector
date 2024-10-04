@@ -1,0 +1,26 @@
+source:
+  type: CustomDatabase
+  serviceName: duckdb_local
+  serviceConnection:
+    config:
+      type: CustomDatabase
+      sourcePythonClass: connector.duckdb_connector.DuckDBConnector
+      connectionOptions:
+        database_name: dev
+        database_schema_list: main_bronze,main_silver,main_gold,main_staging
+        database_file_path: /data/duckdb/dev.duckdb
+
+  sourceConfig:
+    config:
+      type: DatabaseMetadata
+
+sink:
+  type: metadata-rest
+  config: {}
+workflowConfig:
+  openMetadataServerConfig:
+    hostPort: http://openmetadata-server:8585/api
+    authProvider: openmetadata
+    securityConfig:
+      jwtToken: 'eyJraWQiOiJHYjM4OWEtOWY3Ni1nZGpzLWE5MmotMDI0MmJrOTQzNTYiLCJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJvcGVuLW1ldGFkYXRhLm9yZyIsInN1YiI6ImluZ2VzdGlvbi1ib3QiLCJlbWFpbCI6ImluZ2VzdGlvbi1ib3RAb3Blbm1ldGFkYXRhLm9yZyIsImlzQm90Ijp0cnVlLCJ0b2tlblR5cGUiOiJCT1QiLCJpYXQiOjE3Mjc0ODE3MTksImV4cCI6bnVsbH0.GqxFpJ5r2e85d0dHsAiSqzKEiFqm4PVPLqqIiQMI3yF2eoTjLjXbxy911t3HmQCTgB7Pl-6SmozxPdsMlfeAf_J95id7r4dFUmjs9kOtjwJC8XHeRUt8YfESsxmAJri3eP87wilFBPwFeEqvmOWGDCsOFjcJKnbWN34NcVa8KR7tGg-VRF85RwvFwyA3XGwn7J7k1bjLyHjTLEJ9yJjZ8p7rJvYE8GYSengdnUKl6ODdf2YFjh_DYrPfxgkH3iE3Ah_de2M1i0uaG1WCV1Wg1H5F1euzusTKDtMUpHppgaNA8gzt0Tx_Ql3RhEZlurlCAOEcYuFybf2LoEFlelYinA'
+      # You can get this token via OpenMetadata UI, go to Settings -> Integrations -> Bots -> ingestion-bot -> OpenMetadata JWT Token

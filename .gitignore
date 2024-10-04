@@ -1,3 +1,7 @@
 .idea
 duckdb-connector/build
 duckdb-connector/duckdb_connector.egg-info
+
+dev.duckdb
+diff_output.txt
+target/

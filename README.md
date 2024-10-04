@@ -26,11 +26,11 @@ you can find a simple `setup.py` that builds the `connector` module.
 
 If you want to use the connector from the UI, the `openmetadata-ingestion` image should be aware of your new package.
 
-We will be running the demo against the OpenMetadata version `1.1.2`, therefore, our Dockerfile looks like:
+We will be running the demo against the OpenMetadata version `1.5.0`, therefore, our Dockerfile looks like:
 
 ```Dockerfile
 # Base image from the right version
-FROM openmetadata/ingestion:1.1.2
+FROM openmetadata/ingestion:1.5.0
 
 # Let's use the same workdir as the ingestion image
 WORKDIR ingestion
@@ -73,4 +73,4 @@ to set the following Connection Options:
 - `database_schema_list`: List database schema splits by comma, eg. `dimensions, facts, marts`
 - `database_file_path`: The path to DuckDB database local file
 
-You can find an example metadata ingestion configuration in the `duckdb_ingetion.yml` file.
+You can find an example metadata ingestion configuration in the `duckdb_ingestion.yml` file.
